@@ -5,41 +5,35 @@
   
   <title>HappyM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自定义View绘制流程
-  
-一、分类
+  <meta name="description" content="一、分类
 自定义ViewGroup
 自定义ViewGroup一般是利用现有的组件根据特定的布局方式来组成新的组件，大多继承自ViewGroup或各种Layout，包含子View。
 
 自定义View
-在没有现成的View，需要自己实现的时候，就使用自定义View，一般继承自view，SurfaceView或者其他View。不包含子View。例如制作可以加载GIF图的">
+在没有现成的View，需要自己实现的时候，就使用自定义View，一般继承自view，SurfaceView或者其他View。不包含子View。例如制作可以加载GIF图的ImageView。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HappyM">
 <meta property="og:url" content="http://yoursite.com/2016/11/21/自定义View分类与流程/index.html">
 <meta property="og:site_name" content="HappyM">
-<meta property="og:description" content="自定义View绘制流程
-  
-一、分类
+<meta property="og:description" content="一、分类
 自定义ViewGroup
 自定义ViewGroup一般是利用现有的组件根据特定的布局方式来组成新的组件，大多继承自ViewGroup或各种Layout，包含子View。
 
 自定义View
-在没有现成的View，需要自己实现的时候，就使用自定义View，一般继承自view，SurfaceView或者其他View。不包含子View。例如制作可以加载GIF图的">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/cfeeee4dgw1f9ziz4erx3j20fc0heaay.jpg">
+在没有现成的View，需要自己实现的时候，就使用自定义View，一般继承自view，SurfaceView或者其他View。不包含子View。例如制作可以加载GIF图的ImageView。">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/cfeeee4dgw1f9zjgeubr9j20mf04cdgr.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/cfeeee4dgw1f9zmofywabj20bp058gme.jpg">
-<meta property="og:updated_time" content="2016-12-16T15:26:12.992Z">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/cfeeee4dgw1f9ziz4erx3j20fc0heaay.jpg">
+<meta property="og:updated_time" content="2016-12-16T15:53:02.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HappyM">
-<meta name="twitter:description" content="自定义View绘制流程
-  
-一、分类
+<meta name="twitter:description" content="一、分类
 自定义ViewGroup
 自定义ViewGroup一般是利用现有的组件根据特定的布局方式来组成新的组件，大多继承自ViewGroup或各种Layout，包含子View。
 
 自定义View
-在没有现成的View，需要自己实现的时候，就使用自定义View，一般继承自view，SurfaceView或者其他View。不包含子View。例如制作可以加载GIF图的">
-<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/cfeeee4dgw1f9ziz4erx3j20fc0heaay.jpg">
+在没有现成的View，需要自己实现的时候，就使用自定义View，一般继承自view，SurfaceView或者其他View。不包含子View。例如制作可以加载GIF图的ImageView。">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/cfeeee4dgw1f9zjgeubr9j20mf04cdgr.jpg">
   
     <link rel="alternate" href="/atom.xml" title="HappyM" type="application/atom+xml">
   
@@ -100,18 +94,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>  自定义View绘制流程</p>
-<p>  <img src="http://ww2.sinaimg.cn/large/cfeeee4dgw1f9ziz4erx3j20fc0heaay.jpg" alt=""></p>
-<h4 id="一、分类"><a href="#一、分类" class="headerlink" title="一、分类"></a>一、分类</h4><ul>
+        <h4 id="一、分类"><a href="#一、分类" class="headerlink" title="一、分类"></a>一、分类</h4><ul>
 <li><p>自定义ViewGroup</p>
 <p>自定义ViewGroup一般是利用现有的组件根据特定的布局方式来组成新的组件，大多继承自ViewGroup或各种Layout，包含子View。</p>
 </li>
 <li><p>自定义View</p>
 <p>在没有现成的View，需要自己实现的时候，就使用自定义View，一般继承自view，SurfaceView或者其他View。不包含子View。例如制作可以加载GIF图的ImageView。</p>
-</li>
-</ul>
-<h4 id="二、重要的函数"><a href="#二、重要的函数" class="headerlink" title="二、重要的函数"></a>二、重要的函数</h4><a id="more"></a>
-<ul>
+<a id="more"></a>  
+<h4 id="二、重要的函数"><a href="#二、重要的函数" class="headerlink" title="二、重要的函数"></a>二、重要的函数</h4></li>
 <li><p>构造函数</p>
 <p>构造函数是View的入口，用于初始化一些内容，获取自定义的属性。<br>最主要有以下二个：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//一般在直接New一个View的时候调用。</div><div class="line">public void MyView(Context context) &#123;&#125;</div><div class="line"></div><div class="line">//一般在layout文件中使用的时候会调用，关于它的所有属性(包括自定义属性)都会包含在attrs中传递进来。</div><div class="line">public void MyView(Context context, AttributeSet attrs) &#123;&#125;</div></pre></td></tr></table></figure>
@@ -120,7 +110,7 @@
 </li>
 </ul>
 <p>  以下方法调用的是两个参数的构造函数：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//在layout文件中 - 格式为： 包名.View名</div><div class="line">&lt;com.MyView</div><div class="line">  android:layout_width=&quot;wrap_content&quot;</div><div class="line">  android:layout_height=&quot;wrap_content&quot;/&gt;</div></pre></td></tr></table></figure>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//在layout文件中 - 格式为： 包名.View名</div><div class="line">&lt;com.MyView</div><div class="line">  android:layout_width=&quot;wrap_content&quot;</div><div class="line">  android:layout_height=&quot;wrap_content&quot;/&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li><p>测量View的大小onMeasure</p>
 <p>View的大小不仅由自身所决定，同时也会受到父控件的影响，为了我们的控件能更好的适应各种情况，一般会自己进行测量。</p>
@@ -131,7 +121,7 @@
 <p>  从上面可以看出 onMeasure 函数中有 widthMeasureSpec 和 heightMeasureSpec 这两个 int 类型的参数，毫无疑问他们是和宽高相关的，但它们其实不是宽和高，而是由宽、高和各自方向上对应的测量模式来合成的一个值：</p>
 <p>  测量模式一共有三种， 被定义在 Android 中的 View 类的一个内部类View.MeasureSpec中：</p>
 <p>  <img src="http://ww3.sinaimg.cn/large/cfeeee4dgw1f9zjgeubr9j20mf04cdgr.jpg" alt=""></p>
-<p>  ==注意：如果对View的宽高进行修改了，不要调用super.onMeasure(widthMeasureSpec,heightMeasureSpec);要调用setMeasuredDimension(widthsize,heightsize); 这个函数。==</p>
+<p>  <em>注意：如果对View的宽高进行修改了，不要调用super.onMeasure(widthMeasureSpec,heightMeasureSpec);要调用setMeasuredDimension(widthsize,heightsize); 这个函数。</em></p>
 <ul>
 <li><p>确定View的大小onSizeChanged</p>
 <p>这个函数在视图大小发生改变时调用。</p>
@@ -157,6 +147,8 @@
 <p>自定义完View之后，一般会对外暴露一些借口，用于控制View的状态或者监听View的变化。</p>
 </li>
 </ul>
+<p>自定义View绘制流程</p>
+<p>  <img src="http://ww2.sinaimg.cn/large/cfeeee4dgw1f9ziz4erx3j20fc0heaay.jpg" alt=""></p>
 
       
     </div>
