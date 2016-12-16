@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>HappyM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="HappyM">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="HappyM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HappyM">
+  
+    <link rel="alternate" href="/atom.xml" title="HappyM" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">HappyM</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-自定义View分类与流程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/21/自定义View分类与流程/" class="article-date">
+  <time datetime="2016-11-21T14:28:44.431Z" itemprop="datePublished">2016-11-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  自定义View绘制流程</p>
+<p>  <img src="http://ww2.sinaimg.cn/large/cfeeee4dgw1f9ziz4erx3j20fc0heaay.jpg" alt=""></p>
+<h4 id="一、分类"><a href="#一、分类" class="headerlink" title="一、分类"></a>一、分类</h4><ul>
+<li><p>自定义ViewGroup</p>
+<p>自定义ViewGroup一般是利用现有的组件根据特定的布局方式来组成新的组件，大多继承自ViewGroup或各种Layout，包含子View。</p>
+</li>
+<li><p>自定义View</p>
+<p>在没有现成的View，需要自己实现的时候，就使用自定义View，一般继承自view，SurfaceView或者其他View。不包含子View。例如制作可以加载GIF图的ImageView。</p>
+</li>
+</ul>
+<h4 id="二、重要的函数"><a href="#二、重要的函数" class="headerlink" title="二、重要的函数"></a>二、重要的函数</h4>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/21/自定义View分类与流程/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/11/21/自定义View分类与流程/" data-id="ciwry001x00011ovfgkn886td" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android--Context" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/24/Android--Context/" class="article-date">
+  <time datetime="2016-09-24T08:02:18.351Z" itemprop="datePublished">2016-09-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>参照博客 <a href="http://blog.csdn.net/qinjuning/article/details/7310620">Android中Context详解 —- 你所不知道的Context</a></p>
+<h4 id="一、Context相关描述"><a href="#一、Context相关描述" class="headerlink" title="一、Context相关描述"></a>一、Context相关描述</h4></li>
+<li><p>它描述的是一个应用程序环境的信息，即上下文。</p>
+</li>
+<li>该类是一个抽象类（abstract class），Android提供了该抽象类的具体实现类。</li>
+<li>通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如启动Activity，发送广播，接收Intent信息等。</li>
+</ul>
+<h4 id="二、Context相关类的继承关系"><a href="#二、Context相关类的继承关系" class="headerlink" title="二、Context相关类的继承关系"></a>二、Context相关类的继承关系</h4><p><img src="http://hi.csdn.net/attachment/201203/1/0_1330607569Vj4c.gif" alt="image"></p>
+<ul>
+<li><p>Context类 <strong>抽象类，提供一组通用API。</strong></p>
+<p>源码路径：/frameworks/base/core/java/android/content/Context.java</p>
+<p>部分源码如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public abstract class Context &#123;  </div><div class="line">  ...  </div><div class="line">  public abstract Object getSystemService(String name);//获得系统级服务  </div><div class="line">  public abstract void startActivity(Intent intent); //通过一个Intent启动Activity  </div><div class="line">  public abstract ComponentName startService(Intent service); //启动Service</div><div class="line">  //根据文件名得到SharedPreferences对象  </div><div class="line">  public abstract SharedPreferences getSharedPreferences(String name,int mode);  </div><div class="line">  ...  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>ContextImpl类 <strong>该类为Context的实现类，实现了Context的功能。</strong></p>
+<p>路径 ：/frameworks/base/core/java/android/app/ContextImpl.java</p>
+<p>部分源码如下：</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/09/24/Android--Context/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/09/24/Android--Context/" data-id="ciwry001h00001ovfiuql9i75" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/11/21/自定义View分类与流程/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/24/Android--Context/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 miao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
