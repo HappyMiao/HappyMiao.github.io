@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Java 集合框架概述 | HappyM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、概述
+
+Java的集合框架是在Java 2之后出现的。之前是一些可扩展的容器类，比如Vector，Stack，Hashtable等。这些容器类效率不是很好。Java的集合框架出现以后，这些容器类依然保留。下面是集合框架图。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 集合框架概述">
+<meta property="og:url" content="http://yoursite.com/2016/12/19/Java 集合框架/index.html">
+<meta property="og:site_name" content="HappyM">
+<meta property="og:description" content="一、概述
+
+Java的集合框架是在Java 2之后出现的。之前是一些可扩展的容器类，比如Vector，Stack，Hashtable等。这些容器类效率不是很好。Java的集合框架出现以后，这些容器类依然保留。下面是集合框架图。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2243690-9cd9c896e0d512ed.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2243690-05355ad0eda78e6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2243690-ec848d862c725e8d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-12-19T15:13:01.790Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 集合框架概述">
+<meta name="twitter:description" content="一、概述
+
+Java的集合框架是在Java 2之后出现的。之前是一些可扩展的容器类，比如Vector，Stack，Hashtable等。这些容器类效率不是很好。Java的集合框架出现以后，这些容器类依然保留。下面是集合框架图。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2243690-9cd9c896e0d512ed.gif?imageMogr2/auto-orient/strip">
+  
+    <link rel="alternative" href="/atom.xml" title="HappyM" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/logo.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Miao</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/HappyMiao" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/3488542285" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="jianshu" target="_blank" href="http://www.jianshu.com/users/f43e2fe1ade6/latest_articles" title="jianshu"><i class="icon-jianshu"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Miao</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/logo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Miao</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+		        
+		        	<li><a href="/archives/">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/HappyMiao" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/3488542285" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="jianshu" target="_blank" href="http://www.jianshu.com/users/f43e2fe1ade6/latest_articles" title="jianshu"><i class="icon-jianshu"></i></a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-Java 集合框架" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java 集合框架概述
+    </h1>
+  
+
+        <a href="/2016/12/19/Java 集合框架/" class="archive-article-date">
+  	<time datetime="2016-12-19T12:48:20.119Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-19</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、概述</p>
+<ul>
+<li><p>Java的集合框架是在Java 2之后出现的。之前是一些可扩展的容器类，比如Vector，Stack，Hashtable等。这些容器类效率不是很好。Java的集合框架出现以后，这些容器类依然保留。<br>下面是集合框架图。</p>
+<a id="more"></a>
+<p><img src="http://upload-images.jianshu.io/upload_images/2243690-9cd9c896e0d512ed.gif?imageMogr2/auto-orient/strip" alt="Java集合框架"></p>
+</li>
+<li><p>集合主要包括二种类型的容器</p>
+<ol>
+<li>集合（Collection）接口，储存一个元素集合。分为三种子类型接口，List、Set、Queue。</li>
+<li>Map接口 ，以键值对映射的方式储存内容。</li>
+</ol>
+</li>
+</ul>
+<h4 id="二、Collection接口"><a href="#二、Collection接口" class="headerlink" title="二、Collection接口"></a>二、Collection接口</h4><ul>
+<li><p>Collection接口是处理集合的根接口，定义了许多对元素操作的方法。比如add、remove等。AbstractCollection是提供Collection部分实现的抽象类。</p>
+</li>
+<li><p>List接口。List扩展自Collection，它可以定义一个允许重复的有序集合，List允许在指定位置上操作元素。同时增加了一个能够双向遍历线性表的迭代器ListIterator。AbstractList类提供了List接口的部分实现，AbstractSequentialList扩展自AbstractList，主要是提供对链表的支持。</p>
+</li>
+<li><p>ArrayList </p>
+<p>ArrayList是用数组储存元素的，这个数组可以动态创建。超过容量可以创建一个更大的新数组。并将当前数组的所有元素都复制到新数组当中。下面是部分实现源码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">// 1、方法add(E e)向集合中添加指定元素。</div><div class="line">public boolean add(E e) &#123;</div><div class="line">    ensureCapacityInternal(size + 1);  // Increments modCount!!</div><div class="line">    elementData[size++] = e;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//2、此方法主要是确定将要创建的数组大小。</div><div class="line">private void ensureCapacityInternal(int minCapacity) &#123;</div><div class="line">      if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</div><div class="line">          minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      ensureExplicitCapacity(minCapacity);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private void ensureExplicitCapacity(int minCapacity) &#123;</div><div class="line">      modCount++;</div><div class="line">      if (minCapacity - elementData.length &gt; 0)</div><div class="line">          grow(minCapacity);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  //3、最后是创建数组，可以明显的看到先是确定了添加元素后的大小之后将元素复制到新数组中。</div><div class="line">  private void grow(int minCapacity) &#123;</div><div class="line">      // overflow-conscious code</div><div class="line">      int oldCapacity = elementData.length;</div><div class="line">      int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</div><div class="line">      if (newCapacity - minCapacity &lt; 0)</div><div class="line">          newCapacity = minCapacity;</div><div class="line">      if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</div><div class="line">          newCapacity = hugeCapacity(minCapacity);</div><div class="line">      // minCapacity is usually close to size, so this is a win:</div><div class="line">      elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>LinkedList</p>
+<p>LinkedList是在一个链表中存储元素。链表和数组的区别在于对元素的存储方式不同导致它们操作数据时的效率不同。所以，如果除了在末尾处不能在其他位置插入元素或者删除元素，ArrayList效率更高。但是如果需要经常插入或者删除元素。LinkedList效率更高一些。</p>
+</li>
+<li><p>Set</p>
+<p>Set接口扩展自Collection，它与List的不同在于，规定Set的实例不包含重复的元素。在一个规则集内，一定不存在二个相等的元素。AbstractSet是一个实现Set接口的抽象类，Set接口有三个实现类，分别是散列集HashSet、链式散列集LinkedHashSet和树形集TreeSet。</p>
+</li>
+<li><p>散列集 HashSet</p>
+<p>HashSet是Set接口的实现类，可以用来构建空的散列集，也可以由一个现有的集合创建散列集。在散列集中，有两个名词需要关注，初始容量和客座率。客座率是确定在增加规则集之前，该规则集的饱满程度，当元素个数超过了容量与客座率的乘积时，容量就会自动翻倍。下面看一个demo：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public class TestHashSet &#123;</div><div class="line"></div><div class="line">  public static void main(String[] args) &#123;</div><div class="line"></div><div class="line">      Set&lt;String&gt; set = new HashSet&lt;&gt;();</div><div class="line"></div><div class="line">      set.add(&quot;11111&quot;);</div><div class="line">      set.add(&quot;22222&quot;);</div><div class="line">      set.add(&quot;33333&quot;);</div><div class="line">      set.add(&quot;44444&quot;);</div><div class="line">      set.add(&quot;22222&quot;);</div><div class="line"></div><div class="line">      System.out.println(set.size());</div><div class="line"></div><div class="line">      for (String e : set) &#123;</div><div class="line">          System.out.println(e);</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从结果可以看出，元素输出无序且只有四个元素。</p>
+</li>
+<li><p>链式散列集LinkedHashSet</p>
+<p>LinkedHashSet是用链表实现的，用来扩展HashSet类。它支持对元素集内的元素排序。HashSet中的元素是没有被排序的，LinkedHashSet可以按照元素的插入顺序提取。</p>
+</li>
+<li><p>树形集TreeSet</p>
+<p>TreeSet扩展自AbstracSet，并实现了NavigableSet，NavigableSet扩展自AbstracCollection，树形集是一个有序的Set，其底层是一棵树，这样就可以从Set里面提取一个有序序列了。下面是一个例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public class TestSet &#123;</div><div class="line"></div><div class="line">  public static void main(String[] args) &#123;</div><div class="line"></div><div class="line">      TreeSet&lt;Integer&gt; set = new TreeSet&lt;&gt;();</div><div class="line"></div><div class="line">      set.add(1111);</div><div class="line">      set.add(2222);</div><div class="line">      set.add(3333);</div><div class="line">      set.add(4444);</div><div class="line">      set.add(5555);</div><div class="line"></div><div class="line">      System.out.println(set.first()); // 输出第一个元素</div><div class="line">      System.out.println(set.lower(3333)); //小于3333的最大元素</div><div class="line">      System.out.println(set.higher(2222)); //大于2222的最大元素</div><div class="line">      System.out.println(set.floor(3333)); //不大于3333的最大元素</div><div class="line">      System.out.println(set.ceiling(3333)); //不小于3333的最大元素</div><div class="line"></div><div class="line">      System.out.println(set.pollFirst()); //删除第一个元素</div><div class="line">      System.out.println(set.pollLast()); //删除最后一个元素</div><div class="line">      System.out.println(set);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Queue接口</p>
+<p>队列是一种先进先出的数据结构，元素在末尾进/添加、头部出/删除。Queue接口扩展自Collection，并提供插入、提取、检验等操作。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2243690-05355ad0eda78e6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p> 上面的方法对比：</p>
+<p> offer，add区别：一些队列有大小限制，因此如果想在一个满的队列中加入一个新项，多出的项就会被拒绝。这时新的offer方法就可以起作用了。它不是对调用 add() 方法抛出一个 unchecked异常，而只是得到由 offer() 返回的 false。 </p>
+<p> poll，remove区别：remove()和poll()方法都是从队列中删除第一个元素。remove() 的行为与 Collection接口的版本相似，但是新的poll()方法在用空集合调用时不是抛出异常，只是返回null。因此新的方法更适合容易出现异常条件的情况。</p>
+<p>  peek，element区别：element() 和 peek() 用于在队列的头部查询元素。与 remove() 方法类似，在队列为空时， element() 抛出一个异常，而 peek() 返回 null</p>
+</li>
+<li><p>接口Deque </p>
+<p>Deque是扩展自Queue的双端队列。它支持在两端插入和删除元素，因为LinkedList类实现了Deque接口，所以通常我们可以使用LinkedList来创建一个队列。PriorityQueue类实现了一个优先队列，优先队列中元素被赋予优先级，拥有高优先级的先被删除。</p>
+</li>
+</ul>
+<h4 id="三、Map接口"><a href="#三、Map接口" class="headerlink" title="三、Map接口"></a>三、Map接口</h4><ul>
+<li><p>Map，是储存键值对映射的一种容器，在Map中键可以是任意类型的对象，但不能有重复的键，每个键都对应一个值，真正存储在Map中的是键值对构成的条目。Map提供了很多查询、更新和获取键值对的方法，更新包括clear()、put()、putAll()、remove()等等，查询方法包括containsKey、containsValue等等。Map接口常用的有三个具体实现类，分别是HashMap、LinkedHashMap、TreeMap。</p>
+</li>
+<li><p>HashMap</p>
+<p>HashMap是基于哈希表的Map接口的非同步实现，继承自AbstractMap，AbstractMap是部分实现Map接口的抽象类。在平时的开发中，HashMap的使用还是比较多的。我们知道ArrayList主要是用数组来存储元素的，LinkedList是用链表来存储的，那么HashMap是怎么实现的呢？看下图</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2243690-ec848d862c725e8d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>在JDK1.8之前，HashMap采用数组+链表实现，使用链表处理冲突，同一hash值的元素都存在一个链表里。但是当链表中的元素较多（即hash值相等的元素）时，通过key查找的效率较低。而JDK1.8中，HashMap采用数组+链表+红黑树实现，当链表长度超过阈值（8）时，将链表转换为红黑树，这样大大减少了查找时间。</p>
+</li>
+<li><p>LinkedHashMap</p>
+<p>LinkedHasMap继承自HashMap，它主要是用链表实现来扩展HashMap类，HashMap中条目是没有顺序的，但是在LinkedHashMap中元素既可以按照它们的插入Map的顺序排序，也可以按他们最后一次被访问的顺排序。</p>
+</li>
+<li><p>TreeMap</p>
+<p>TreeMap基于红黑树数据结构的实现，键值可以使用Comparable或Comparator接口来排序。TreeMap继承自AbstractMap，同时实现了接口NavigableMap，而接口NavigableMap则继承自SortedMap。SortedMap是Map的子接口，使用它可以确保图中的条目是排好序的。</p>
+<p>在实际使用中，如果更新图时不需要保持图中元素的顺序，就使用HashMap，如果需要保持图中元素的插入顺序或者访问顺序，就使用LinkedHashMap，如果需要使图按照键值排序，就使用TreeMap。</p>
+</li>
+<li><p>Map的知识点很深，此处做一简单复习。后续会深入研究Map的实现原理，整理出博客文章来。</p>
+</li>
+</ul>
+<h4 id="四、其他集合类"><a href="#四、其他集合类" class="headerlink" title="四、其他集合类"></a>四、其他集合类</h4><ul>
+<li><p>上面主要对Java集合框架作了简单的介绍，包括Collection和Map接口以及他们的抽象类和常用的具体实现类。下面介绍一下几个特殊的集合类，Vector，Stack、HashTable、ConcurrentHashMap以及CopyOnWriteArrayList。</p>
+</li>
+<li><p>Vector</p>
+<p>前面我们已经提到，Java设计者们在对之前的容器类进行重新设计时保留了一些数据结构，其中就有Vector。用法上，Vector与ArrayList基本一致，不同之处在于Vector使用了关键字synchronized将访问和修改向量的方法都变成同步的了，所以对于不需要同步的应用程序来说，类ArrayList比类Vector更高效。</p>
+</li>
+<li><p>Stack</p>
+<p>Stack，栈类，是Java2之前引入的，继承自类Vector。</p>
+</li>
+<li><p>HashTable</p>
+<p>HashTable和前面介绍的HashMap很类似，它也是一个散列表，存储的内容是键值对映射，不同之处在于，HashTable是继承自Dictionary的，HashTable中的函数都是同步的，这意味着它也是线程安全的，另外，HashTable中key和value都不可以为null。</p>
+<p>上面的三个集合类都是在Java2之前推出的容器类，可以看到，尽管在使用中效率比较低，但是它们都是线程安全的。下面介绍两个特殊的集合类。</p>
+</li>
+<li><p>ConcurrentHashMap</p>
+<p>Concurrent，并发，从名字就可以看出来ConcurrentHashMap是HashMap的线程安全版。同HashMap相比，ConcurrentHashMap不仅保证了访问的线程安全性，而且在效率上与HashTable相比，也有较大的提高。关于ConcurrentHashMap的设计，我将会在下一篇关于并发编程的博客中介绍，敬请关注。</p>
+</li>
+<li><p>CopyOnWriteArrayList</p>
+<p>CopyOnWriteArrayList，是一个线程安全的List接口的实现，它使用了ReentrantLock锁来保证在并发情况下提供高性能的并发读取。</p>
+</li>
+</ul>
+<h4 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h4><ul>
+<li><p>Java集合框架主要包括Collection和Map两种类型。其中Collection又有3种子类型，分别是List、Set、Queue。Map中存储的主要是键值对映射。</p>
+</li>
+<li><p>规则集Set中存储的是不重复的元素，线性表中存储可以包括重复的元素，Queue队列描述的是先进先出的数据结构，可以用LinkedList来实现队列。</p>
+</li>
+<li><p>效率上，规则集比线性表更高效。</p>
+</li>
+<li><p>ArrayList主要是用数组来存储元素，LinkedList主要是用链表来存储元素，HashMap的底层实现主要是借助数组+链表+红黑树来实现。</p>
+</li>
+<li><p>Vector、HashTable等集合类效率比较低但都是线程安全的。包java.util.concurrent下包含了大量线程安全的集合类，效率上有较大提升。</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢，暂未开放<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/logo.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/12/19/Java 集合框架/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/12/19/Java中的接口和抽象类/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java 接口、抽象类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/18/一念起，万水千山/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一念起，万水千山。</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Miao
+				本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    	</div>
+      <div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">心情</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Android开发菜鸟一枚&lt;br&gt;努力学知识&lt;br&gt;爱好：听别人吹牛，哈哈^_^</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
