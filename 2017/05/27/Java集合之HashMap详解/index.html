@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java集合之HashMap详解 | HappyM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Map接口简介 Map为Java实现数据结构映射的一个接口，此接口有四个实现类：分别是HashMap、Hashtable、LinkedHashMap和TreeMap，类继承关系如下图所示。">
+  <meta name="description" content="一、map接口简介  Map为Java实现数据结构映射的一个接口，此接口有四个实现类：分别是HashMap、Hashtable、LinkedHashMap和TreeMap，类继承关系如下图所示。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java集合之HashMap详解">
 <meta property="og:url" content="http://yoursite.com/2017/05/27/Java集合之HashMap详解/index.html">
 <meta property="og:site_name" content="HappyM">
-<meta property="og:description" content="Map接口简介 Map为Java实现数据结构映射的一个接口，此接口有四个实现类：分别是HashMap、Hashtable、LinkedHashMap和TreeMap，类继承关系如下图所示。">
+<meta property="og:description" content="一、map接口简介  Map为Java实现数据结构映射的一个接口，此接口有四个实现类：分别是HashMap、Hashtable、LinkedHashMap和TreeMap，类继承关系如下图所示。">
 <meta property="og:image" content="http://tech.meituan.com/img/java-hashmap/java.util.map%E7%B1%BB%E5%9B%BE.png">
 <meta property="og:image" content="http://tech.meituan.com/img/java-hashmap/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png">
 <meta property="og:image" content="http://tech.meituan.com/img/java-hashmap/hashMap%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE.png">
 <meta property="og:image" content="http://tech.meituan.com/img/java-hashmap/hashMap%20put%E6%96%B9%E6%B3%95%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
-<meta property="og:updated_time" content="2017-05-27T07:20:21.000Z">
+<meta property="og:updated_time" content="2017-06-24T15:58:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java集合之HashMap详解">
-<meta name="twitter:description" content="Map接口简介 Map为Java实现数据结构映射的一个接口，此接口有四个实现类：分别是HashMap、Hashtable、LinkedHashMap和TreeMap，类继承关系如下图所示。">
+<meta name="twitter:description" content="一、map接口简介  Map为Java实现数据结构映射的一个接口，此接口有四个实现类：分别是HashMap、Hashtable、LinkedHashMap和TreeMap，类继承关系如下图所示。">
 <meta name="twitter:image" content="http://tech.meituan.com/img/java-hashmap/java.util.map%E7%B1%BB%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="HappyM" type="application/atom+xml">
@@ -169,21 +169,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Map接口简介"><a href="#Map接口简介" class="headerlink" title="Map接口简介"></a>Map接口简介</h3><ul>
-<li>Map为Java实现数据结构映射的一个接口，此接口有四个实现类：分别是HashMap、Hashtable、LinkedHashMap和TreeMap，类继承关系如下图所示。</li>
-</ul>
+        <p>一、map接口简介</p>
+<ul>
+<li><p>Map为Java实现数据结构映射的一个接口，此接口有四个实现类：分别是HashMap、Hashtable、LinkedHashMap和TreeMap，类继承关系如下图所示。</p>
 <a id="more"></a>
 <p><img src="http://tech.meituan.com/img/java-hashmap/java.util.map%E7%B1%BB%E5%9B%BE.png" alt=""></p>
 <p>四个实现类的简单介绍如下：</p>
 <p>1、HashMap：它根据键的hashCode值存储数据，大多数情况下可以直接定位到它的值，因而具有很快的访问速度，但遍历顺序却是不确定的。 HashMap最多只允许一条记录的键为null，允许多条记录的值为null。HashMap非线程安全，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。如果需要满足线程安全，可以用 Collections的synchronizedMap方法使HashMap具有线程安全的能力，或者使用ConcurrentHashMap。</p>
 <p>我们能否让HashMap同步？</p>
 <p>HashMap可以通过下面的语句进行同步：</p>
-<pre><code>Map m = Collections.synchronizeMap(hashMap);
-</code></pre><p>2、 Hashtable：Hashtable是遗留类，很多映射的常用功能与HashMap类似，不同的是它承自Dictionary类，并且是线程安全的，任一时间只有一个线程能写Hashtable，并发性不如ConcurrentHashMap，因为ConcurrentHashMap引入了分段锁。Hashtable不建议在新代码中使用，不需要线程安全的场合可以用HashMap替换，需要线程安全的场合可以用ConcurrentHashMap替换。</p>
+<p>Map m = Collections.synchronizeMap(hashMap);</p>
+<p>2、 Hashtable：Hashtable是遗留类，很多映射的常用功能与HashMap类似，不同的是它承自Dictionary类，并且是线程安全的，任一时间只有一个线程能写Hashtable，并发性不如ConcurrentHashMap，因为ConcurrentHashMap引入了分段锁。Hashtable不建议在新代码中使用，不需要线程安全的场合可以用HashMap替换，需要线程安全的场合可以用ConcurrentHashMap替换。</p>
 <p>3、 LinkedHashMap：LinkedHashMap是HashMap的一个子类，保存了记录的插入顺序，在用Iterator遍历LinkedHashMap时，先得到的记录肯定是先插入的，也可以在构造时带参数，按照访问次序排序。</p>
 <p>4、 TreeMap：TreeMap实现SortedMap接口，能够把它保存的记录根据键排序，默认是按键值的升序排序，也可以指定排序的比较器，当用Iterator遍历TreeMap时，得到的记录是排过序的。如果使用排序的映射，建议使用TreeMap。在使用TreeMap时，key必须实现Comparable接口或者在构造TreeMap传入自定义的Comparator，否则会在运行时抛出java.lang.ClassCastException类型的异常。</p>
 <p>对于上述四种Map类型的类，要求映射中的key是不变对象。不可变对象是该对象在创建后它的hash值不会改变。如果对象的hash值发生变化，Map对象很可能就定位不到映射的位置了。下面将对使用频率较高的HashMap进行介绍。从储存结构、常用方法分析扩容等方面深入理解HashMap的工作原理。</p>
-<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><h5 id="HashMap的储存结构"><a href="#HashMap的储存结构" class="headerlink" title="HashMap的储存结构"></a>HashMap的储存结构</h5><ul>
+</li>
+</ul>
+<p>二、HashMap的储存结构</p>
+<ul>
 <li><p>从结构来看，HashMap是数组+链表+红黑树（JDK1.8引入红黑树）实现的。如下图</p>
 <p><img src="http://tech.meituan.com/img/java-hashmap/hashMap%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="image"></p>
 </li>
@@ -206,55 +209,48 @@
 <p>这里存在一个问题，即使负载因子和Hash算法设计再合理，也免不了会出现拉链过长的情况，一旦出现拉链过长，则会严重影响HashMap的性能。于是，在JDK1.8中，对数据结构做了进一步的优化，即引入了红黑树。当链表长度超过8时，链表就转换为红黑树，利用红黑树快速增删改查的特点提高HashMap的性能，其中会用到红黑树的插入、删除等算法。<a href="http://blog.csdn.net/v_july_v/article/details/6105630" target="_blank" rel="external">红黑树学习参考这里</a></p>
 </li>
 </ul>
-<h5 id="HashMap的部分功能具体实现"><a href="#HashMap的部分功能具体实现" class="headerlink" title="HashMap的部分功能具体实现"></a>HashMap的部分功能具体实现</h5><ul>
-<li>以下功能解析有：根据key获取哈希桶数组索引位置、put方法的详细执行、扩容过程</li>
-</ul>
-<ol>
-<li><p>确定哈希桶数组索引位置</p>
-<p>不管增加、删除、查找键值对，定位到哈希桶数组的位置都是很关键的第一步。前面说过HashMap的数据结构是数组和链表的结合，所以我们希望这个HashMap里面的元素位置尽量分布均匀些，尽量使得每个位置上的元素只有一个，那么当我们用hash算法求得这个位置的时候，马上就可以知道对应位置的元素就是我们要的，不用遍历链表，大大优化了查询的效率。HashMap定位数组索引位置，直接决定了hash方法的离散性能。源码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">方法一：</div><div class="line">static final int hash(Object key) &#123;   //jdk1.8 &amp; jdk1.7</div><div class="line">    int h;</div><div class="line">    // h = key.hashCode() 为第一步 取hashCode值</div><div class="line">    // h ^ (h &gt;&gt;&gt; 16)  为第二步 高位参与运算</div><div class="line">    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);</div><div class="line"> &#125;</div><div class="line"> 方法二：</div><div class="line"> static int indexFor(int h, int length) &#123;</div><div class="line">    //jdk1.7的源码，jdk1.8没有这个方法，但是实现原理一样的</div><div class="line">    return h &amp; (length-1);  //第三步 取模运算</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>这里Hash算法本质分三步：取key的hashCode值、高位运算、取模运算。</p>
-<p>对于任意给定的对象，只要它的hashCode()返回值相同。那么程序调用方法一所得到的hash码总是相同的。我们首先想到是把hash值对数组长度取模运算，这样一来，元素的分布相对来说是比较均匀的。但是，模运算的消耗还是比较大的，在HashMap中是这样做的：调用方法二来计算该对象应该保存在table数组的哪个索引处。</p>
-<p>这个方法非常巧妙，它通过h &amp; (table.length -1)来得到该对象的保存位，而HashMap底层数组的长度总是2的n次方，这是HashMap在速度上的优化。当length总是2的n次方时，h&amp; (length-1)运算等价于对length取模，也就是h%length，但是&amp;比%具有更高的效率。</p>
-<p>在JDK1.8的实现中，优化了高位运算的算法，通过hashCode()的高16位异或低16位实现的：(h = k.hashCode()) ^ (h &gt;&gt;&gt; 16)，主要是从速度、功效、质量来考虑的，这么做可以在数组table的length比较小的时候，也能保证考虑到高低Bit都参与到Hash的计算中，同时不会有太大的开销。</p>
-<p>下面举例说明下，n为table的长度。</p>
-<p><img src="http://tech.meituan.com/img/java-hashmap/hashMap%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE.png" alt="image"></p>
-</li>
-<li><p>分析HashMap的put方法</p>
-<p>hashMap的put方法执行过程可以通过下图来理解。</p>
-<p><img src="http://tech.meituan.com/img/java-hashmap/hashMap%20put%E6%96%B9%E6%B3%95%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="image"></p>
-<p>①.判断键值对数组table[i]是否为空或为null，否则执行resize()进行扩容；</p>
-<p>②.根据键值key计算hash值得到插入的数组索引i，如果table[i]==null，直接新建节点添加，转向⑥，如果table[i]不为空，转向③；</p>
-<p>③.判断table[i]的首个元素是否和key一样，如果相同直接覆盖value，否则转向④，这里的相同指的是hashCode以及equals；</p>
-<p>④.判断table[i] 是否为treeNode，即table[i] 是否是红黑树，如果是红黑树，则直接在树中插入键值对，否则转向⑤；</p>
-<p>⑤.遍历table[i]，判断链表长度是否大于8，大于8的话把链表转换为红黑树，在红黑树中执行插入操作，否则进行链表的插入操作；遍历过程中若发现key已经存在直接覆盖value即可；</p>
-<p>⑥.插入成功后，判断实际存在的键值对数量size是否超多了最大容量threshold，如果超过，进行扩容。</p>
-<p>源码有待查看</p>
-</li>
-<li><p>HashMap扩容机制</p>
-<p>扩容(resize)就是重新计算容量，向HashMap对象里不停的添加元素，而HashMap对象内部的数组无法装载更多的元素时，对象就需要扩大数组的长度，以便能装入更多的元素。当然Java里的数组是无法自动扩容的，方法是使用一个新的数组代替已有的容量小的数组，就像我们用一个小桶装水，如果想装更多的水，就得换大水桶。</p>
-<p>我们分析下resize的源码，鉴于JDK1.8融入了红黑树，较复杂，为了便于理解我们仍然使用JDK1.7的代码，好理解一些，本质上区别不大，具体区别后文再说。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">void resize(int newCapacity) &#123;   //传入新的容量</div><div class="line">     Entry[] oldTable = table;    //引用扩容前的Entry数组</div><div class="line">     int oldCapacity = oldTable.length;         </div><div class="line">     if (oldCapacity == MAXIMUM_CAPACITY) &#123;  //扩容前的数组大小如果已经达到最大(2^30)了</div><div class="line">       threshold = Integer.MAX_VALUE; //修改阈值为int的最大值(2^31-1)，这样以后就不会扩容了</div><div class="line">       return;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     Entry[] newTable = new Entry[newCapacity]; //初始化一个新的Entry数组</div><div class="line">     transfer(newTable); //！！将数据转移到新的Entry数组里</div><div class="line">     table = newTable;  //HashMap的table属性引用新的Entry数组</div><div class="line">     threshold = (int)(newCapacity * loadFactor);//修改阈值</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这里就是使用一个容量更大的数组来代替已有的容量小的数组，transfer()方法将原有Entry数组的元素拷贝到新的Entry数组里。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">void transfer(Entry[] newTable) &#123;</div><div class="line">     Entry[] src = table;//src引用了旧的Entry数组</div><div class="line">     int newCapacity = newTable.length;</div><div class="line">     for (int j = 0; j &lt; src.length; j++) &#123; //遍历旧的Entry数组</div><div class="line">        Entry&lt;K,V&gt; e = src[j]; //取得旧Entry数组的每个元素</div><div class="line">        if (e != null) &#123;</div><div class="line">           src[j] = null;//释放旧Entry数组的对象引用（for循环后，旧的Entry数组不再引用任何对象）</div><div class="line">           do &#123;</div><div class="line">                Entry&lt;K,V&gt; next = e.next;</div><div class="line">                int i = indexFor(e.hash, newCapacity); //！！重新计算每个元素在数组中的位置</div><div class="line">                e.next = newTable[i]; //标记[1]</div><div class="line">                newTable[i] = e;//将元素放在数组上</div><div class="line">                e = next;//访问下一个Entry链上的元素</div><div class="line">            &#125; while (e != null);</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>newTable[i]的引用赋给了e.next，也就是使用了单链表的头插入方式，同一位置上新元素总会被放在链表的头部位置；这样先放在一个索引上的元素终会被放到Entry链的尾部(如果发生了hash冲突的话），这一点和Jdk1.8有区别，下文详解。在旧数组中同一条Entry链上的元素，通过重新计算索引位置后，有可能被放到了新数组的不同位置上。</p>
-</li>
-</ol>
+<p>三、HashMap的部分功能具体实现</p>
 <ul>
-<li>HashMap扩容的例子有待添加</li>
-</ul>
-<h5 id="HashMap为什么线程不安全"><a href="#HashMap为什么线程不安全" class="headerlink" title="HashMap为什么线程不安全"></a>HashMap为什么线程不安全</h5><p><a href="http://blog.csdn.net/xuefeng0707/article/details/40797085" target="_blank" rel="external">HashMap多线程死循环问题</a></p>
-<ul>
-<li>主要是多线程同时put时，如果同时触发了rehash操作，会导致HashMap中的链表中出现循环节点，进而使得后面get的时候，会死循环。</li>
-</ul>
-<h5 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h5><ol>
-<li><p>扩容是一个特别耗性能的操作，所以当程序员在使用HashMap的时候，估算map的大小，初始化的时候给一个大致的数值，避免map进行频繁的扩容。</p>
+<li><p>以下功能解析有：根据key获取哈希桶数组索引位置、put方法的详细执行、扩容过程</p>
+<p>1、确定哈希桶数组索引位置</p>
+<p> 不管增加、删除、查找键值对，定位到哈希桶数组的位置都是很关键的第一步。前面说过HashMap的数据结构是数组和链表的结合，所以我们希望这个HashMap里面的元素位置尽量分布均匀些，尽量使得每个位置上的元素只有一个，那么当我们用hash算法求得这个位置的时候，马上就可以知道对应位置的元素就是我们要的，不用遍历链表，大大优化了查询的效率。HashMap定位数组索引位置，直接决定了hash方法的离散性能。源码实现：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">方法一：</div><div class="line">static final int hash(Object key) &#123;   //jdk1.8 &amp; jdk1.7</div><div class="line">    int h;</div><div class="line">    // h = key.hashCode() 为第一步 取hashCode值</div><div class="line">    // h ^ (h &gt;&gt;&gt; 16)  为第二步 高位参与运算</div><div class="line">    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);</div><div class="line"> &#125;</div><div class="line"> 方法二：</div><div class="line"> static int indexFor(int h, int length) &#123;</div><div class="line">    //jdk1.7的源码，jdk1.8没有这个方法，但是实现原理一样的</div><div class="line">    return h &amp; (length-1);  //第三步 取模运算</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p> 这里Hash算法本质分三步：取key的hashCode值、高位运算、取模运算。</p>
+<p> 对于任意给定的对象，只要它的hashCode()返回值相同。那么程序调用方法一所得到的hash码总是相同的。我们首先想到是把hash值对数组长度取模运算，这样一来，元素的分布相对来说是比较均匀的。但是，模运算的消耗还是比较大的，在HashMap中是这样做的：调用方法二来计算该对象应该保存在table数组的哪个索引处。</p>
+<p> 这个方法非常巧妙，它通过h &amp; (table.length -1)来得到该对象的保存位，而HashMap底层数组的长度总是2的n次方，这是HashMap在速度上的优化。当length总是2的n次方时，h&amp; (length-1)运算等价于对length取模，也就是h%length，但是&amp;比%具有更高的效率。</p>
+<p> 在JDK1.8的实现中，优化了高位运算的算法，通过hashCode()的高16位异或低16位实现的：(h = k.hashCode()) ^ (h &gt;&gt;&gt; 16)，主要是从速度、功效、质量来考虑的，这么做可以在数组table的length比较小的时候，也能保证考虑到高低Bit都参与到Hash的计算中，同时不会有太大的开销。</p>
+<p> 下面举例说明下，n为table的长度。</p>
+<p> <img src="http://tech.meituan.com/img/java-hashmap/hashMap%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95%E4%BE%8B%E5%9B%BE.png" alt="image"></p>
+<p>2、分析HashMap的put方法</p>
+<p> hashMap的put方法执行过程可以通过下图来理解。</p>
+<p> <img src="http://tech.meituan.com/img/java-hashmap/hashMap%20put%E6%96%B9%E6%B3%95%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="image"></p>
+<p> ①.判断键值对数组table[i]是否为空或为null，否则执行resize()进行扩容；</p>
+<p> ②.根据键值key计算hash值得到插入的数组索引i，如果table[i]==null，直接新建节点添加，转向⑥，如果table[i]不为空，转向③；</p>
+<p> ③.判断table[i]的首个元素是否和key一样，如果相同直接覆盖value，否则转向④，这里的相同指的是hashCode以及equals；</p>
+<p> ④.判断table[i] 是否为treeNode，即table[i] 是否是红黑树，如果是红黑树，则直接在树中插入键值对，否则转向⑤；</p>
+<p> ⑤.遍历table[i]，判断链表长度是否大于8，大于8的话把链表转换为红黑树，在红黑树中执行插入操作，否则进行链表的插入操作；遍历过程中若发现key已经存在直接覆盖value即可；</p>
+<p> ⑥.插入成功后，判断实际存在的键值对数量size是否超多了最大容量threshold，如果超过，进行扩容。</p>
+<p> 源码有待查看</p>
+<p>3、HashMap扩容机制</p>
+<p> 扩容(resize)就是重新计算容量，向HashMap对象里不停的添加元素，而HashMap对象内部的数组无法装载更多的元素时，对象就需要扩大数组的长度，以便能装入更多的元素。当然Java里的数组是无法自动扩容的，方法是使用一个新的数组代替已有的容量小的数组，就像我们用一个小桶装水，如果想装更多的水，就得换大水桶。</p>
+<p> 我们分析下resize的源码，鉴于JDK1.8融入了红黑树，较复杂，为了便于理解我们仍然使用JDK1.7的代码，好理解一些，本质上区别不大，具体区别后文再说。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">void resize(int newCapacity) &#123;   //传入新的容量</div><div class="line">     Entry[] oldTable = table;    //引用扩容前的Entry数组</div><div class="line">     int oldCapacity = oldTable.length;         </div><div class="line">     if (oldCapacity == MAXIMUM_CAPACITY) &#123;  //扩容前的数组大小如果已经达到最大(2^30)了</div><div class="line">       threshold = Integer.MAX_VALUE; //修改阈值为int的最大值(2^31-1)，这样以后就不会扩容了</div><div class="line">       return;</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     Entry[] newTable = new Entry[newCapacity]; //初始化一个新的Entry数组</div><div class="line">     transfer(newTable); //！！将数据转移到新的Entry数组里</div><div class="line">     table = newTable;  //HashMap的table属性引用新的Entry数组</div><div class="line">     threshold = (int)(newCapacity * loadFactor);//修改阈值</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p> 这里就是使用一个容量更大的数组来代替已有的容量小的数组，transfer()方法将原有Entry数组的元素拷贝到新的Entry数组里。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">void transfer(Entry[] newTable) &#123;</div><div class="line">     Entry[] src = table;//src引用了旧的Entry数组</div><div class="line">     int newCapacity = newTable.length;</div><div class="line">     for (int j = 0; j &lt; src.length; j++) &#123; //遍历旧的Entry数组</div><div class="line">        Entry&lt;K,V&gt; e = src[j]; //取得旧Entry数组的每个元素</div><div class="line">        if (e != null) &#123;</div><div class="line">           src[j] = null;//释放旧Entry数组的对象引用（for循环后，旧的Entry数组不再引用任何对象）</div><div class="line">           do &#123;</div><div class="line">                Entry&lt;K,V&gt; next = e.next;</div><div class="line">                int i = indexFor(e.hash, newCapacity); //！！重新计算每个元素在数组中的位置</div><div class="line">                e.next = newTable[i]; //标记[1]</div><div class="line">                newTable[i] = e;//将元素放在数组上</div><div class="line">                e = next;//访问下一个Entry链上的元素</div><div class="line">            &#125; while (e != null);</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p> newTable[i]的引用赋给了e.next，也就是使用了单链表的头插入方式，同一位置上新元素总会被放在链表的头部位置；这样先放在一个索引上的元素终会被放到Entry链的尾部(如果发生了hash冲突的话），这一点和Jdk1.8有区别，下文详解。在旧数组中同一条Entry链上的元素，通过重新计算索引位置后，有可能被放到了新数组的不同位置上。</p>
 </li>
-<li><p>负载因子是可以修改的，也可以大于1，但是建议不要轻易修改，除非情况非常特殊。</p>
+<li><p>HashMap扩容的例子有待添加</p>
+<p>HashMap为什么线程不安全</p>
+<p><a href="http://blog.csdn.net/xuefeng0707/article/details/40797085" target="_blank" rel="external">HashMap多线程死循环问题</a></p>
 </li>
-<li>HashMap是线程不安全的，不要在并发的环境中同时操作HashMap，建议使用ConcurrentHashMap。</li>
-<li>JDK1.8引入红黑树大程度优化了HashMap的性能。</li>
-</ol>
+<li><p>主要是多线程同时put时，如果同时触发了rehash操作，会导致HashMap中的链表中出现循环节点，进而使得后面get的时候，会死循环。</p>
+<p>小结</p>
+<p>1、扩容是一个特别耗性能的操作，所以当程序员在使用HashMap的时候，估算map的大小，初始化的时候给一个大致的数值，避免map进行频繁的扩容。</p>
+<p>2、负载因子是可以修改的，也可以大于1，但是建议不要轻易修改，除非情况非常特殊。</p>
+<p>3、HashMap是线程不安全的，不要在并发的环境中同时操作HashMap，建议使用ConcurrentHashMap。</p>
+<p>4、JDK1.8引入红黑树大程度优化了HashMap的性能。</p>
+</li>
+</ul>
 <p><a href="http://tech.meituan.com/java-hashmap.html" target="_blank" rel="external">笔记来源</a></p>
 
       
@@ -489,6 +485,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -539,7 +539,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.ilaoda.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
+              <a href="https://ilaoda.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
             </li>
           
         </ul>

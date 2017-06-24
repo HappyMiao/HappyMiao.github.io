@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Android中Context详解 | HappyM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、Context相关描述 它描述的是一个应用程序环境的信息，即上下文。 该类是一个抽象类（abstract class），Android提供了该抽象类的具体实现类。 通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如启动Activity，发送广播，接收Intent信息等。">
+  <meta name="description" content="一、Context相关描述  它描述的是一个应用程序环境的信息，即上下文。 该类是一个抽象类（abstract class），Android提供了该抽象类的具体实现类。 通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如启动Activity，发送广播，接收Intent信息等。">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android中Context详解">
 <meta property="og:url" content="http://yoursite.com/2017/05/27/Android--Context/index.html">
 <meta property="og:site_name" content="HappyM">
-<meta property="og:description" content="一、Context相关描述 它描述的是一个应用程序环境的信息，即上下文。 该类是一个抽象类（abstract class），Android提供了该抽象类的具体实现类。 通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如启动Activity，发送广播，接收Intent信息等。">
+<meta property="og:description" content="一、Context相关描述  它描述的是一个应用程序环境的信息，即上下文。 该类是一个抽象类（abstract class），Android提供了该抽象类的具体实现类。 通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如启动Activity，发送广播，接收Intent信息等。">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201203/1/0_1330607569Vj4c.gif">
-<meta property="og:updated_time" content="2017-05-27T07:24:14.000Z">
+<meta property="og:updated_time" content="2017-06-24T16:03:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android中Context详解">
-<meta name="twitter:description" content="一、Context相关描述 它描述的是一个应用程序环境的信息，即上下文。 该类是一个抽象类（abstract class），Android提供了该抽象类的具体实现类。 通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如启动Activity，发送广播，接收Intent信息等。">
+<meta name="twitter:description" content="一、Context相关描述  它描述的是一个应用程序环境的信息，即上下文。 该类是一个抽象类（abstract class），Android提供了该抽象类的具体实现类。 通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如启动Activity，发送广播，接收Intent信息等。">
 <meta name="twitter:image" content="http://hi.csdn.net/attachment/201203/1/0_1330607569Vj4c.gif">
   
     <link rel="alternative" href="/atom.xml" title="HappyM" type="application/atom+xml">
@@ -166,13 +166,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="一、Context相关描述"><a href="#一、Context相关描述" class="headerlink" title="一、Context相关描述"></a>一、Context相关描述</h4><ul>
+        <p>一、Context相关描述</p>
+<ul>
 <li>它描述的是一个应用程序环境的信息，即上下文。</li>
 <li>该类是一个抽象类（abstract class），Android提供了该抽象类的具体实现类。</li>
-<li>通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如启动Activity，发送广播，接收Intent信息等。</li>
-</ul>
+<li><p>通过它我们可以获取应用程序的资源和类，也包括一些应用级别操作，例如启动Activity，发送广播，接收Intent信息等。</p>
 <a id="more"></a>  
-<h4 id="二、Context相关类的继承关系"><a href="#二、Context相关类的继承关系" class="headerlink" title="二、Context相关类的继承关系"></a>二、Context相关类的继承关系</h4><p><img src="http://hi.csdn.net/attachment/201203/1/0_1330607569Vj4c.gif" alt="image"></p>
+</li>
+</ul>
+<p>二、Context相关类的继承关系</p>
+<p><img src="http://hi.csdn.net/attachment/201203/1/0_1330607569Vj4c.gif" alt="image"></p>
 <ul>
 <li><p>Context类 <strong>抽象类，提供一组通用API。</strong></p>
 <p>源码路径：/frameworks/base/core/java/android/content/Context.java</p>
@@ -199,13 +202,14 @@
 <li><p><strong>Activity类 、Service类 、Application类本质上都是Context子类</strong></p>
 </li>
 </ul>
-<h4 id="三、Context实例的创建"><a href="#三、Context实例的创建" class="headerlink" title="三、Context实例的创建"></a>三、Context实例的创建</h4><ul>
+<p>三、Context实例的创建</p>
+<ul>
 <li><p>何时创建Context对象</p>
 <ol>
 <li>创建Application对象时，而且整个APP共一个Application对象。</li>
 <li>创建Service对象时。</li>
 <li><p>创建Activity对象时。</p>
-<p>因此可以得到:<br>总Context实例个数 = Service个数 + Activity个数 + 1（Application对应的Context实例）</p>
+<p>因此可以得到:总Context实例个数 = Service个数 + Activity个数 + 1（Application对应的Context实例）</p>
 </li>
 </ol>
 </li>
@@ -223,7 +227,7 @@
 <p><strong>通过startService或者bindService时，如果系统检测到需要新创建一个Service实例，就会回调handleCreateService()方法，<br>完成相关数据操作。handleCreateService()函数位于 ActivityThread.java类。</strong></p>
    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//创建一个Service实例时同时创建ContextIml实例</div><div class="line">private final void handleCreateService(CreateServiceData data)&#123;  </div><div class="line">        ...  </div><div class="line">        //创建一个Service实例  </div><div class="line">        Service service = null;  </div><div class="line">        try &#123;  </div><div class="line">            java.lang.ClassLoader cl = packageInfo.getClassLoader();  </div><div class="line">            service = (Service) cl.loadClass(data.info.name).newInstance();  </div><div class="line">        &#125; catch (Exception e) &#123;  </div><div class="line">        &#125;  </div><div class="line">        ...  </div><div class="line">        ContextImpl context = new ContextImpl(); //创建一个ContextImpl对象实例  </div><div class="line">        context.init(packageInfo, null, this);   //初始化该ContextIml实例的相关属性  </div><div class="line">        //获得我们之前创建的Application对象信息  </div><div class="line">        Application app = packageInfo.makeApplication(false, mInstrumentation);  </div><div class="line">        //将该Service信息传递给该ContextImpl实例  </div><div class="line">        context.setOuterContext(service);  </div><div class="line">        ...  </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>通过对ContextImp的分析可知，其方法的大多数操作都是直接调用其属性mPackageInfo(该属性类<br>型为PackageInfo)的相关方法而来。这说明ContextImp是一种轻量级类，而PackageInfo才是真正重量级的类。而一个App里的<br>所有ContextIml实例，都对应同一个packageInfo对象。</p>
+<li><p>通过对ContextImp的分析可知，其方法的大多数操作都是直接调用其属性mPackageInfo(该属性类型为PackageInfo)的相关方法而来。这说明ContextImp是一种轻量级类，而PackageInfo才是真正重量级的类。而一个App里的所有ContextIml实例，都对应同一个packageInfo对象。</p>
 </li>
 <li><p>分析利用Context获取SharedPreferences类的使用方法</p>
 <ol>
@@ -471,6 +475,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -521,7 +529,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.ilaoda.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
+              <a href="https://ilaoda.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
             </li>
           
         </ul>

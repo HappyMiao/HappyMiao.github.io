@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java 接口、抽象类 | HappyM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、抽象类  抽象方法 只有声明，没有具体的实现。格式如下：  1abstract void fun();  抽象类 包含抽象方法的类（抽象类不一定必须有抽象方法，它和普通类一样，同样可以拥有成员变量和成员方法）,抽象类是为了继承而存在的。格式如下：">
+  <meta name="description" content="一、抽象类  抽象方法 只有声明，没有具体的实现。格式如下： 1abstract void fun();  抽象类 包含抽象方法的类（抽象类不一定必须有抽象方法，它和普通类一样，同样可以拥有成员变量和成员方法）,抽象类是为了继承而存在的。格式如下：">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 接口、抽象类">
 <meta property="og:url" content="http://yoursite.com/2016/12/19/Java中的接口和抽象类/index.html">
 <meta property="og:site_name" content="HappyM">
-<meta property="og:description" content="一、抽象类  抽象方法 只有声明，没有具体的实现。格式如下：  1abstract void fun();  抽象类 包含抽象方法的类（抽象类不一定必须有抽象方法，它和普通类一样，同样可以拥有成员变量和成员方法）,抽象类是为了继承而存在的。格式如下：">
-<meta property="og:updated_time" content="2016-12-18T23:34:36.000Z">
+<meta property="og:description" content="一、抽象类  抽象方法 只有声明，没有具体的实现。格式如下： 1abstract void fun();  抽象类 包含抽象方法的类（抽象类不一定必须有抽象方法，它和普通类一样，同样可以拥有成员变量和成员方法）,抽象类是为了继承而存在的。格式如下：">
+<meta property="og:updated_time" content="2017-06-24T16:09:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 接口、抽象类">
-<meta name="twitter:description" content="一、抽象类  抽象方法 只有声明，没有具体的实现。格式如下：  1abstract void fun();  抽象类 包含抽象方法的类（抽象类不一定必须有抽象方法，它和普通类一样，同样可以拥有成员变量和成员方法）,抽象类是为了继承而存在的。格式如下：">
+<meta name="twitter:description" content="一、抽象类  抽象方法 只有声明，没有具体的实现。格式如下： 1abstract void fun();  抽象类 包含抽象方法的类（抽象类不一定必须有抽象方法，它和普通类一样，同样可以拥有成员变量和成员方法）,抽象类是为了继承而存在的。格式如下：">
   
     <link rel="alternative" href="/atom.xml" title="HappyM" type="application/atom+xml">
   
@@ -167,7 +167,7 @@
         <p>一、抽象类</p>
 <ul>
 <li><p>抽象方法</p>
-<p>只有声明，没有具体的实现。格式如下： </p>
+<p>只有声明，没有具体的实现。格式如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">abstract void fun();</div></pre></td></tr></table></figure>
 </li>
 <li><p>抽象类</p>
@@ -181,16 +181,18 @@
 <p>如果一个类继承于一个抽象类，则子类必须实现父类的抽象方法。如果子类没有实现父类的抽象方法，则必须将子类也定义为abstract类。</p>
 </li>
 </ul>
-<h3 id="二、接口"><a href="#二、接口" class="headerlink" title="二、接口"></a>二、接口</h3><ul>
+<p>二、接口  </p>
+<ul>
 <li><p>定义</p>
 <p>interface，软件工程中，接口泛指供别人调用的方法或者函数。在Java里，是对行为的抽象。<br>形式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[public] interface InterfaceName &#123;</div><div class="line"> </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[public] interface InterfaceName &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>规则</p>
 <p>接口中可以含有变量和方法。变量会被隐式并且只能指定为public static final变量。方法会被隐式的指定为且只能是public abstract。接口中所有的方法不能有具体的实现，必须是抽象方法。</p>
 </li>
 </ul>
-<h3 id="三、抽象类和接口的区别"><a href="#三、抽象类和接口的区别" class="headerlink" title="三、抽象类和接口的区别"></a>三、抽象类和接口的区别</h3><ul>
+<p>三、抽象类和接口的区别</p>
+<ul>
 <li><p>语法的区别</p>
 <ol>
 <li>抽象类可以提供成员方法的实现细节，而接口中只能存在public abstract 方法。</li>
@@ -428,6 +430,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -478,7 +484,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.ilaoda.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
+              <a href="https://ilaoda.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
             </li>
           
         </ul>

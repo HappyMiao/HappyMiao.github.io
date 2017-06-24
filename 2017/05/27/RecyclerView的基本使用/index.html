@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/27/RecyclerView的基本使用/index.html">
 <meta property="og:site_name" content="HappyM">
 <meta property="og:description" content="RecyclerView的引入 1compile &amp;apos;com.android.support:recyclerview-v7:23.1.1&amp;apos; //RecyclerView  几个重要的类">
-<meta property="og:updated_time" content="2017-05-27T07:25:32.000Z">
+<meta property="og:updated_time" content="2017-06-24T16:04:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RecyclerView的基本使用方法">
 <meta name="twitter:description" content="RecyclerView的引入 1compile &amp;apos;com.android.support:recyclerview-v7:23.1.1&amp;apos; //RecyclerView  几个重要的类">
@@ -169,8 +169,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.android.support:recyclerview-v7:23.1.1&apos; //RecyclerView</div></pre></td></tr></table></figure>
 </li>
 <li><p>几个重要的类</p>
-</li>
-</ul>
 <a id="more"></a>
 <ol>
 <li><p>RecyclerView.Adapter:抽象类，为RecyclerView提供数据，一般根据不同的业务需求来编写具体的实现类。</p>
@@ -180,7 +178,7 @@
 <li>RecyclerView.ItemDecoration:抽象类，这个主要用于不同的Item之间添加分割线（可选）。官方没有实现类，所以如果要添加分割线，我们需要手动实现这个抽象类。</li>
 <li>RecyclerView.ItemAnimator:抽象类，这个主要用于当一个item添加或者删除的时候出现的动画效果，官方提供一个默认的实现类。如果想要使我们的RecyclerView在添加、删除数据的时候有炫酷的动画，可以实现这个抽象类。</li>
 </ol>
-<ul>
+</li>
 <li><p>基本使用</p>
 <p>适配器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">public class RecyclerViewAdapter extends RecyclerView.Adapter&lt;RecyclerViewAdapter.ViewHolder&gt;&#123;</div><div class="line"></div><div class="line">  //数据源</div><div class="line">  private List&lt;String&gt; mData;</div><div class="line">  //随机改变一个mHeight值 用于设置StaggeredGridLayout(瀑布流)布局管理器</div><div class="line">  private List&lt;Integer&gt; mHeight;</div><div class="line"></div><div class="line">  //构造</div><div class="line">  public RecyclerViewAdapter(List&lt;String&gt; mData)&#123;</div><div class="line">      this.mData = mData;</div><div class="line">      mHeight = new ArrayList&lt;Integer&gt;();</div><div class="line">      //随机改变一个mHeight值 用于设置StaggeredGridLayout(瀑布流)布局管理器</div><div class="line">      for (int i = 0; i &lt; mData.size(); i++)</div><div class="line">      &#123;</div><div class="line">          mHeight.add((int) (100 + Math.random() * 300));</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line">      View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout,parent,false);</div><div class="line">      ViewHolder viewHolder = new ViewHolder(view);</div><div class="line">      return viewHolder;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public void onBindViewHolder(ViewHolder holder, int position) &#123;</div><div class="line">      holder.list_item.setText(mData.get(position));</div><div class="line">      //绑定数据的同时，修改每个ItemView的高度 用于设置StaggeredGridLayout(瀑布流)布局管理器</div><div class="line">      //ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();</div><div class="line">      //lp.height = mHeight.get(position);</div><div class="line">      //holder.itemView.setLayoutParams(lp);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public int getItemCount() &#123;</div><div class="line">      return mData.size();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  class ViewHolder extends RecyclerView.ViewHolder&#123;</div><div class="line">      private TextView list_item;</div><div class="line">      public ViewHolder(View itemView) &#123;</div><div class="line">          super(itemView);</div><div class="line">          list_item = (TextView) itemView.findViewById(R.id.list_item);</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -433,6 +431,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -483,7 +485,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.ilaoda.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
+              <a href="https://ilaoda.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
             </li>
           
         </ul>

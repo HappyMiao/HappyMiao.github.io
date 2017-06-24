@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2243690-9cd9c896e0d512ed.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2243690-05355ad0eda78e6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2243690-ec848d862c725e8d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-12-18T23:34:36.000Z">
+<meta property="og:updated_time" content="2017-06-24T16:08:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 集合框架概述">
 <meta name="twitter:description" content="一、概述  Java的集合框架是在Java 2之后出现的。之前是一些可扩展的容器类，比如Vector，Stack，Hashtable等。这些容器类效率不是很好。Java的集合框架出现以后，这些容器类依然保留。下面是集合框架图。">
@@ -181,14 +181,15 @@
 </ol>
 </li>
 </ul>
-<h4 id="二、Collection接口"><a href="#二、Collection接口" class="headerlink" title="二、Collection接口"></a>二、Collection接口</h4><ul>
+<p>二、Collection接口</p>
+<ul>
 <li><p>Collection接口是处理集合的根接口，定义了许多对元素操作的方法。比如add、remove等。AbstractCollection是提供Collection部分实现的抽象类。</p>
 </li>
 <li><p>List接口。List扩展自Collection，它可以定义一个允许重复的有序集合，List允许在指定位置上操作元素。同时增加了一个能够双向遍历线性表的迭代器ListIterator。AbstractList类提供了List接口的部分实现，AbstractSequentialList扩展自AbstractList，主要是提供对链表的支持。</p>
 </li>
-<li><p>ArrayList </p>
+<li><p>ArrayList</p>
 <p>ArrayList是用数组储存元素的，这个数组可以动态创建。超过容量可以创建一个更大的新数组。并将当前数组的所有元素都复制到新数组当中。下面是部分实现源码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">// 1、方法add(E e)向集合中添加指定元素。</div><div class="line">public boolean add(E e) &#123;</div><div class="line">    ensureCapacityInternal(size + 1);  // Increments modCount!!</div><div class="line">    elementData[size++] = e;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//2、此方法主要是确定将要创建的数组大小。</div><div class="line">private void ensureCapacityInternal(int minCapacity) &#123;</div><div class="line">      if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</div><div class="line">          minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      ensureExplicitCapacity(minCapacity);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private void ensureExplicitCapacity(int minCapacity) &#123;</div><div class="line">      modCount++;</div><div class="line">      if (minCapacity - elementData.length &gt; 0)</div><div class="line">          grow(minCapacity);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  //3、最后是创建数组，可以明显的看到先是确定了添加元素后的大小之后将元素复制到新数组中。</div><div class="line">  private void grow(int minCapacity) &#123;</div><div class="line">      // overflow-conscious code</div><div class="line">      int oldCapacity = elementData.length;</div><div class="line">      int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</div><div class="line">      if (newCapacity - minCapacity &lt; 0)</div><div class="line">          newCapacity = minCapacity;</div><div class="line">      if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</div><div class="line">          newCapacity = hugeCapacity(minCapacity);</div><div class="line">      // minCapacity is usually close to size, so this is a win:</div><div class="line">      elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">// 1、方法add(E e)向集合中添加指定元素。</div><div class="line">public boolean add(E e) &#123;</div><div class="line">    ensureCapacityInternal(size + 1);  // Increments modCount!!</div><div class="line">    elementData[size++] = e;</div><div class="line">    return true;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//2、此方法主要是确定将要创建的数组大小。</div><div class="line">private void ensureCapacityInternal(int minCapacity) &#123;</div><div class="line">      if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</div><div class="line">          minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      ensureExplicitCapacity(minCapacity);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  private void ensureExplicitCapacity(int minCapacity) &#123;</div><div class="line">      modCount++;</div><div class="line">      if (minCapacity - elementData.length &gt; 0)</div><div class="line">          grow(minCapacity);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  //3、最后是创建数组，可以明显的看到先是确定了添加元素后的大小之后将元素复制到新数组中。</div><div class="line">  private void grow(int minCapacity) &#123;</div><div class="line">      // overflow-conscious code</div><div class="line">      int oldCapacity = elementData.length;</div><div class="line">      int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</div><div class="line">      if (newCapacity - minCapacity &lt; 0)</div><div class="line">          newCapacity = minCapacity;</div><div class="line">      if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</div><div class="line">          newCapacity = hugeCapacity(minCapacity);</div><div class="line">      // minCapacity is usually close to size, so this is a win:</div><div class="line">      elementData = Arrays.copyOf(elementData, newCapacity);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>LinkedList</p>
 <p>LinkedList是在一个链表中存储元素。链表和数组的区别在于对元素的存储方式不同导致它们操作数据时的效率不同。所以，如果除了在末尾处不能在其他位置插入元素或者删除元素，ArrayList效率更高。但是如果需要经常插入或者删除元素。LinkedList效率更高一些。</p>
@@ -212,15 +213,16 @@
 <p>队列是一种先进先出的数据结构，元素在末尾进/添加、头部出/删除。Queue接口扩展自Collection，并提供插入、提取、检验等操作。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2243690-05355ad0eda78e6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p> 上面的方法对比：</p>
-<p> offer，add区别：一些队列有大小限制，因此如果想在一个满的队列中加入一个新项，多出的项就会被拒绝。这时新的offer方法就可以起作用了。它不是对调用 add() 方法抛出一个 unchecked异常，而只是得到由 offer() 返回的 false。 </p>
+<p> offer，add区别：一些队列有大小限制，因此如果想在一个满的队列中加入一个新项，多出的项就会被拒绝。这时新的offer方法就可以起作用了。它不是对调用 add() 方法抛出一个 unchecked异常，而只是得到由 offer() 返回的 false。</p>
 <p> poll，remove区别：remove()和poll()方法都是从队列中删除第一个元素。remove() 的行为与 Collection接口的版本相似，但是新的poll()方法在用空集合调用时不是抛出异常，只是返回null。因此新的方法更适合容易出现异常条件的情况。</p>
 <p>  peek，element区别：element() 和 peek() 用于在队列的头部查询元素。与 remove() 方法类似，在队列为空时， element() 抛出一个异常，而 peek() 返回 null</p>
 </li>
-<li><p>接口Deque </p>
+<li><p>接口Deque</p>
 <p>Deque是扩展自Queue的双端队列。它支持在两端插入和删除元素，因为LinkedList类实现了Deque接口，所以通常我们可以使用LinkedList来创建一个队列。PriorityQueue类实现了一个优先队列，优先队列中元素被赋予优先级，拥有高优先级的先被删除。</p>
 </li>
 </ul>
-<h4 id="三、Map接口"><a href="#三、Map接口" class="headerlink" title="三、Map接口"></a>三、Map接口</h4><ul>
+<p>三、Map接口</p>
+<ul>
 <li><p>Map，是储存键值对映射的一种容器，在Map中键可以是任意类型的对象，但不能有重复的键，每个键都对应一个值，真正存储在Map中的是键值对构成的条目。Map提供了很多查询、更新和获取键值对的方法，更新包括clear()、put()、putAll()、remove()等等，查询方法包括containsKey、containsValue等等。Map接口常用的有三个具体实现类，分别是HashMap、LinkedHashMap、TreeMap。</p>
 </li>
 <li><p>HashMap</p>
@@ -238,7 +240,8 @@
 <li><p>Map的知识点很深，此处做一简单复习。后续会深入研究Map的实现原理，整理出博客文章来。</p>
 </li>
 </ul>
-<h4 id="四、其他集合类"><a href="#四、其他集合类" class="headerlink" title="四、其他集合类"></a>四、其他集合类</h4><ul>
+<p>四、其他集合类</p>
+<ul>
 <li><p>上面主要对Java集合框架作了简单的介绍，包括Collection和Map接口以及他们的抽象类和常用的具体实现类。下面介绍一下几个特殊的集合类，Vector，Stack、HashTable、ConcurrentHashMap以及CopyOnWriteArrayList。</p>
 </li>
 <li><p>Vector</p>
@@ -258,7 +261,8 @@
 <p>CopyOnWriteArrayList，是一个线程安全的List接口的实现，它使用了ReentrantLock锁来保证在并发情况下提供高性能的并发读取。</p>
 </li>
 </ul>
-<h4 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h4><ul>
+<p>五、总结</p>
+<ul>
 <li><p>Java集合框架主要包括Collection和Map两种类型。其中Collection又有3种子类型，分别是List、Set、Queue。Map中存储的主要是键值对映射。</p>
 </li>
 <li><p>规则集Set中存储的是不重复的元素，线性表中存储可以包括重复的元素，Queue队列描述的是先进先出的数据结构，可以用LinkedList来实现队列。</p>
@@ -503,6 +507,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">心情</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -553,7 +561,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.ilaoda.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
+              <a href="https://ilaoda.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>沪上队长</a>
             </li>
           
         </ul>
